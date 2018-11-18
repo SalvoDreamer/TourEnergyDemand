@@ -1,6 +1,8 @@
 package it.politecnico_di_bari.sorbo_cantoro.tourenergydemand;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Registration extends AppCompatActivity {
@@ -29,9 +34,28 @@ public class Registration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(validate()){
-                    //Upload data
+                    String email = userEmail.getText().toString().trim();
+                    String password = userPassword.getText().toString().trim();
+
+                    firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(Registration.this,"Registration complete, welcome to TED",Toast.LENGTH_SHORT).show();
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        startActivity(new Intent(Registration.this,Login.class));
+                                    }
+                                }, 1500);
+                            }else{
+                                Toast.makeText(Registration.this,"Registration failed",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                 }else{
-                    //Gestire errore con messaggio di errore
+                    startActivity(new Intent(Registration.this,Registration.class));
                 }
             }
         });
@@ -55,39 +79,39 @@ public class Registration extends AppCompatActivity {
     private Boolean validate(){
         Boolean result = true;
         String name = userName.getText().toString();
-        String email = userPassword.getText().toString();
-        String password = userPassword.getTransitionName().toString();
+        String email = userEmail.getText().toString();
+        String password = userPassword.getText().toString();
 
         //isEmpty?
         if(name.isEmpty()) {
             Toast.makeText(this, "Insert Username", Toast.LENGTH_SHORT).show();
-            result = false;
+            return false;
         }
         if(email.isEmpty()) {
             Toast.makeText(this, "Insert Email", Toast.LENGTH_SHORT).show();
-            result = false;
+            return false;
         }
         if(password.isEmpty()) {
             Toast.makeText(this, "Insert Password", Toast.LENGTH_SHORT).show();
-            result = false;
+            return false;
         }
 
         //Name validation
         if(name.length()<=3 || name.length()>=21) {
             Toast.makeText(this, "Name must be between 3 and 20 characters", Toast.LENGTH_SHORT).show();
-            result = false;
+            return false;
         }
 
         //Email validation
-        if(!email.contains("@") || !email.endsWith(".com") || !email.endsWith(".it") || !email.endsWith(".net") || !email.endsWith(".org")) {
+        if(!email.contains("@") || !email.endsWith(".com")) {
             Toast.makeText(this, "Something wrong in your email", Toast.LENGTH_SHORT).show();
-            result = false;
+            return false;
         }
 
         //Password validation
         if(password.length()<=4 || password.length()>=21){
             Toast.makeText(this, "Password must be between 4 and 20 characters", Toast.LENGTH_SHORT).show();
-            result = false;
+            return false;
         }
 
         return result;
