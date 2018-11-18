@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "902449874296",
+    "firebase_url": "https://tourenergydemand.firebaseio.com",
+    "project_id": "tourenergydemand",
+    "storage_bucket": "tourenergydemand.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902449874296:android:ea7b06a2e115eebd",
+        "android_client_info": {
+          "package_name": "it.politecnico_di_bari.sorbo_cantoro.tourenergydemand"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902449874296-cbj06bav8mttha0f0hdrt0ll3gqh4qdh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMlPpxiiZRORdAffwwXGPrn9U4TgxbtPg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

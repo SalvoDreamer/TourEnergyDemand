@@ -14,7 +14,7 @@
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/nemo_logo_2"
         android:contentDescription="@string/logo_img" />
 
@@ -73,7 +73,7 @@
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="120dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_below="@+id/etPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
@@ -89,13 +89,25 @@
         android:id="@+id/tvCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/footer"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/btnLogin"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="120dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="sans-serif"
         android:text=" "
         android:textColor="@android:color/background_light" />
+
+    <TextView
+        android:id="@+id/tvGoToRegistration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCounter"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/aclonica"
+        android:text="Not a member? SIGN UP!"
+        android:textAlignment="center"
+        android:textColor="@android:color/background_light"
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/footer"
@@ -103,12 +115,13 @@
         android:layout_height="20dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="sans-serif"
         android:text="@string/footer_txt"
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
         android:typeface="normal" />
+
 
 
 

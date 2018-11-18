@@ -15,6 +15,7 @@ public class Login extends AppCompatActivity {
     private Button login_btn;
     private TextView info;
     private TextView messaggio;
+    private TextView registration;
     private int counter=7;
 
 
@@ -28,11 +29,19 @@ public class Login extends AppCompatActivity {
         messaggio = (TextView) findViewById(R.id.tvMessage);
         info = (TextView) findViewById(R.id.tvCounter);
         login_btn = (Button) findViewById(R.id.btnLogin);
+        registration = (TextView) findViewById(R.id.tvGoToRegistration);
 
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 validate(name.getText().toString(),password.getText().toString());
+            }
+        });
+
+        registration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Login.this,Registration.class));
             }
         });
 
