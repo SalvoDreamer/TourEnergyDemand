@@ -3,4 +3,5 @@
     <string name="logo_img">logo</string>
     <string name="title">Tour Energy Demand</string>
     <string name="footer_txt">All rights reserved - DEI</string>
+    <string name="title_activity_mappa">Map</string>
 </resources>
