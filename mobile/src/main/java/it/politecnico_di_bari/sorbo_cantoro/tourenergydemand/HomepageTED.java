@@ -10,6 +10,8 @@ public class HomepageTED extends AppCompatActivity {
 
     private Button mapButton;
 
+    private Button routeButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,10 +19,19 @@ public class HomepageTED extends AppCompatActivity {
 
         mapButton = (Button) findViewById(R.id.btnMaps);
 
+        routeButton = (Button) findViewById(R.id.btnRoute);
+
         mapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(HomepageTED.this,Mappa.class));
+            }
+        });
+
+        routeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomepageTED.this,Percorsi.class));
             }
         });
     }
