@@ -61,10 +61,10 @@ public class Percorsi extends FragmentActivity implements OnMapReadyCallback, Lo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_percorsi);
-        Constants.POINT_DEST = new LatLng(18.758663, 73.382025);
-        Constants.POINT_START = new LatLng(19.758663, 73.382025);  //Lonavala destination.
+        Constants.POINT_DEST = new LatLng(41.111715, 16.888987);  //casa di salvo destination.
+        Constants.POINT_START = new LatLng(41.106078, 16.852620);  //fincons start.
         //Load the map fragment on UI
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mappa);
         mapFragment.getMapAsync(this);
         txtDistance = (TextView) findViewById(R.id.txt_distance);
         txtTime = (TextView) findViewById(R.id.txt_time);
@@ -73,7 +73,7 @@ public class Percorsi extends FragmentActivity implements OnMapReadyCallback, Lo
             @Override
             public void onClick(View v) {
                 Percorsi.this.getRoutingPath();
-                Snackbar.make(v, "Fetching Route", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(v, "Recupero del percorso", Snackbar.LENGTH_SHORT).show();
             }
         });
 
@@ -88,7 +88,7 @@ public class Percorsi extends FragmentActivity implements OnMapReadyCallback, Lo
         //Ensure the GPS is ON and location permission enabled for the application.
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-        Toast.makeText(Percorsi.this, "Fetching Location", Toast.LENGTH_SHORT).show();
+        Toast.makeText(Percorsi.this, "Primo recupero del percorso", Toast.LENGTH_SHORT).show();
         try {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 // TODO: Consider calling
@@ -270,6 +270,7 @@ public class Percorsi extends FragmentActivity implements OnMapReadyCallback, Lo
                     .build();
             routing.execute();
         } catch (Exception e) {
+            e.printStackTrace();
             Toast.makeText(Percorsi.this, "Unable to Route", Toast.LENGTH_SHORT).show();
         }
     }

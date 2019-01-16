@@ -2,14 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="it.politecnico_di_bari.sorbo_cantoro.tourenergydemand">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality. 
+         location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
@@ -19,17 +18,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login">
 
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".Delirio"
+            android:label="@string/title_activity_delirio">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.politecnico_di_bari.sorbo_cantoro.tourenergydemand.HomepageTED" />
         </activity>
+        <activity android:name=".Login"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".HomepageTED" />
-        <activity android:name=".Registration" />
-        <activity android:name=".Percorsi">
+        <activity android:name=".HomepageTED">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,10 +55,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="it.politecnico_di_bari.sorbo_cantoro.tourenergydemand.HomepageTED" />
         </activity>
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDrXbm4MmupKfD9UwomhNHc0qjHBDW_7iU" />
+        <activity android:name=".Registration" />
+        <activity
+            android:name=".Percorsi"
+            android:label="@string/">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="it.politecnico_di_bari.sorbo_cantoro.tourenergydemand.HomepageTED" />
+        </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -52,8 +71,6 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/. 
         -->
-
-
         <activity
             android:name=".Mappa"
             android:label="@string/title_activity_mappa">
